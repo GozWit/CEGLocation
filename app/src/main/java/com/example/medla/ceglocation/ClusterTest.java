@@ -1,9 +1,6 @@
 package com.example.medla.ceglocation;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.baidu.mapapi.clusterutil.clustering.Cluster;
@@ -31,13 +28,13 @@ public class ClusterTest extends BaseActivity implements BaiduMap.OnMapLoadedCal
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_marker_cluster_demo);
-        mMapView = (MapView) findViewById(R.id.bmapView);
+        mMapView = findViewById(R.id.bmapView);
         ms = new MapStatus.Builder().target(new LatLng(39.914935, 116.403119)).zoom(8).build();
         mBaiduMap = mMapView.getMap();
-        mBaiduMap.setOnMapLoadedCallback((BaiduMap.OnMapLoadedCallback) this);
+        mBaiduMap.setOnMapLoadedCallback(this);
         mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(ms));
         // 定义点聚合管理类ClusterManager
-        mClusterManager = new ClusterManager<MyItem>(this, mBaiduMap);
+        mClusterManager = new ClusterManager<>(this, mBaiduMap);
         // 添加Marker点
         addMarkers();
         // 设置地图监听，当地图状态发生改变时，进行点聚合运算
@@ -96,7 +93,7 @@ public class ClusterTest extends BaseActivity implements BaiduMap.OnMapLoadedCal
         LatLng llF = new LatLng(39.886965, 116.441394);
         LatLng llG = new LatLng(39.996965, 116.411394);
 
-        List<MyItem> items = new ArrayList<MyItem>();
+        List<MyItem> items = new ArrayList<>();
         items.add(new MyItem(llA));
         items.add(new MyItem(llB));
         items.add(new MyItem(llC));
@@ -138,34 +135,4 @@ public class ClusterTest extends BaseActivity implements BaiduMap.OnMapLoadedCal
         mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(ms));
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.item_cluster:
-                Intent intentC = new Intent(ClusterTest.this, ClusterTest.class);
-                startActivity(intentC);
-                Toast.makeText(this, "This is ClusterTest Mode", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.item_bubble:
-                Intent intent = new Intent(ClusterTest.this, MainActivity.class);
-                startActivity(intent);
-                Toast.makeText(this, "This is Bubble Display Mode", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.item_spot:
-                Intent intentS = new Intent(ClusterTest.this, SpotActivity.class);
-                startActivity(intentS);
-                Toast.makeText(this, "This is Spot Display Mode", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.item_exit:
-                Toast.makeText(this, "See you next time", Toast.LENGTH_SHORT).show();
-                ActivityCollector.finishAll();
-        }
-        return true;
-    }
 }

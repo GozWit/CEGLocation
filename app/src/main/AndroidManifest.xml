@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.medla.ceglocation">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,7 +15,8 @@
     <!-- 获取设备的网络状态，鉴权所需网络代理 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 允许sd卡写权限，需写入地图数据，禁用后无法显示地图 -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
     <!-- 获取统计数据 -->
     <uses-permission android:name="android.permission.GET_TASKS" />
     <!-- 鉴权所需该权限获取进程列表 -->
@@ -28,9 +30,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<!--
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="iP7PcKskDwonEcyr7L6qVQM0zE9vSc01" />
+-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="E6qr5n5OyooSIBC6WDvHX4XxhaedshFS" />
+
+        <activity android:name=".BaseActivity" />
 
         <activity
             android:name=".MainActivity"
@@ -44,11 +53,11 @@
         <activity
             android:name=".SpotActivity"
             android:launchMode="singleTask"
-            android:label="CEG Location: Spot"></activity>
+            android:label="CEG Location: Spot" />
         <activity
             android:name=".ClusterTest"
             android:launchMode="singleTask"
-            android:label="ClusterTest"></activity>
+            android:label="ClusterTest" />
     </application>
 
 </manifest>
