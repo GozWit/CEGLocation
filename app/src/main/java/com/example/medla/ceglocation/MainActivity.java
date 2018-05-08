@@ -10,10 +10,6 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapView;
 
-//import android.webkit.WebView;
-//import android.webkit.WebViewClient;
-
-
 public class MainActivity extends BaseActivity {
 
     private MapView mMapView = null;
@@ -47,17 +43,6 @@ public class MainActivity extends BaseActivity {
         LocationMode mCurrentMode = LocationMode.NORMAL;
         MyLocationConfiguration config = new MyLocationConfiguration(mCurrentMode, true, mCurrentMarker);
         mBaiduMap.setMyLocationConfiguration(config);*/
-
-
-/*        chartshow_wb=(WebView)findViewById(R.id.chartshow_wb);
-        //进行webwiev的一堆设置
-        //开启本地文件读取（默认为true，不设置也可以）
-        chartshow_wb.getSettings().setAllowFileAccess(true);
-        //开启脚本支持
-        chartshow_wb.getSettings().setJavaScriptEnabled(true);
-        chartshow_wb.setWebViewClient(new WebViewClient());
-
-        chartshow_wb.loadUrl("file:///android_asset/test/new.html");*/
 
     }
 
