@@ -32,11 +32,6 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.item_cluster:
-                Intent intentC = new Intent(this, ClusterTest.class);
-                startActivity(intentC);
-                Toast.makeText(this, "This is ClusterTest Mode", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.item_bubble:
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
@@ -53,4 +48,5 @@ public class BaseActivity extends AppCompatActivity {
         }
         return true;
     }
+
 }

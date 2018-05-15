@@ -2,9 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/item_cluster"
-        android:title="ClusterTest"/>
-    <item
         android:id="@+id/item_bubble"
         android:title="Bubble(Default)"/>
     <item
